@@ -1,0 +1,26 @@
+.input-modern {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #4f5ba7;
+  background: #22244b;
+  color: #e2e6ff;
+  margin-top: 5px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+.form-group label {
+  color: #8fdcff;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 3px;
+  display: block;
+}
+.scenario-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 32px 8px #23247a44;
+}
+
+.scenario-card {
+  transition: box-shadow 0.2s, transform 0.13s;
+}

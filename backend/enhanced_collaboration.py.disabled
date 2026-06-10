@@ -1,0 +1,41 @@
+import asyncio
+import time
+from typing import Dict
+from websocket_manager import ws_manager
+
+# Import your existing agents (keeping all existing functionality)
+from agents.creative_agent import creative_agent
+from agents.finance_agent import finance_agent
+from agents.inventory_agent import inventory_agent
+
+class EnhancedAgentCollaboration:
+    def __init__(self):
+        self.collaboration_history = []
+        
+    async def run_collaborative_campaign(self, query: str, product: str, budget_data: dict = None, inventory_data: dict = None) -> Dict:
+        """Minimal collaborative campaign - focus on agents"""
+        
+        print(f"🚀 Running Agents for: {product}")
+        
+        # Simple sequential execution - NO repetitive workflow
+        creative_result = creative_agent(query, product)
+        finance_result = finance_agent(query, product)  
+        inventory_result = inventory_agent(query, product)
+        
+        # Minimal final result
+        final_plan = f"""✅ CAMPAIGN READY
+
+🎯 {query} for {product}
+💰 Budget optimized and approved
+📦 Inventory verified and available  
+🚀 Launch when ready"""
+
+        return {
+            "Creative": creative_result,
+            "Finance": finance_result,
+            "Inventory": inventory_result,
+            "Final Plan": final_plan
+        }
+
+# Global enhanced collaboration instance
+enhanced_collaboration = EnhancedAgentCollaboration()

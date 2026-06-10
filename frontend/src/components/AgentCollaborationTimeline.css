@@ -1,0 +1,248 @@
+/* AGENT COLLABORATION TIMELINE STYLES */
+.agent-collaboration-timeline {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.timeline-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.timeline-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-step {
+  position: relative;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 2rem;
+  top: 5rem;
+  width: 4px;
+  height: 2rem;
+  background: linear-gradient(180deg, var(--step-color), rgba(255, 255, 255, 0.2));
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.step-content {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 4px solid var(--step-color);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-content:hover {
+  transform: translateY(-2px);
+  border-color: var(--step-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, var(--step-color), rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.step-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.step-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-icon {
+  font-size: 1rem;
+  display: block;
+}
+
+.status-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--step-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step-description {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-result {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.result-label::before {
+  content: '📋';
+  font-size: 1rem;
+}
+
+.result-details {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.result-section {
+  margin-bottom: 1.5rem;
+}
+
+.result-header {
+  font-weight: 600;
+  color: var(--step-color);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid var(--step-color);
+}
+
+.result-content {
+  color: #cbd5e1;
+  padding-left: 1rem;
+}
+
+.result-text {
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar for Result Details */
+.result-details::-webkit-scrollbar {
+  width: 6px;
+}
+
+.result-details::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.result-details::-webkit-scrollbar-thumb {
+  background: var(--step-color);
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .agent-collaboration-timeline {
+    padding: 1.5rem 1rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+  
+  .step-content {
+    padding: 1.5rem;
+  }
+  
+  .step-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .step-name {
+    font-size: 1.25rem;
+  }
+  
+  .step-icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .step-icon {
+    font-size: 1.25rem;
+  }
+  
+  .timeline-connector {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-content {
+    padding: 1rem;
+  }
+  
+  .result-details {
+    font-size: 0.9rem;
+  }
+}

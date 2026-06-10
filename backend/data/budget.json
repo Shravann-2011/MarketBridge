@@ -1,0 +1,24 @@
+{
+  "total_budget": 75000,
+  "allocated_budget": 15000,
+  "department_budgets": {
+    "digital_marketing": 30000,
+    "traditional_advertising": 20000,
+    "content_creation": 15000,
+    "promotions_discounts": 10000
+  },
+  "quarterly_targets": {
+    "Q1": 18750,
+    "Q2": 18750,
+    "Q3": 18750,
+    "Q4": 18750
+  },
+  "campaign_history": [
+    {
+      "campaign_name": "Summer Sale 2024",
+      "allocated": 15000,
+      "spent": 15000,
+      "roi": 0.23
+    }
+  ]
+}

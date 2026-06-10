@@ -1,0 +1,113 @@
+{
+  "products": [
+    {
+      "product": "Wireless Headphones",
+      "stock": 150,
+      "reserved": 25,
+      "region": "North America",
+      "reorder_level": 30,
+      "supplier": "TechSupply Co",
+      "unit_cost": 45.00,
+      "demand_trend": "high"
+    },
+    {
+      "product": "Wireless Headphones",
+      "stock": 89,
+      "reserved": 15,
+      "region": "Europe",
+      "reorder_level": 25,
+      "supplier": "TechSupply Co",
+      "unit_cost": 47.00,
+      "demand_trend": "medium"
+    },
+    {
+      "product": "Wireless Headphones",
+      "stock": 45,
+      "reserved": 8,
+      "region": "Asia Pacific",
+      "reorder_level": 20,
+      "supplier": "TechSupply Co",
+      "unit_cost": 43.00,
+      "demand_trend": "high"
+    },
+    {
+      "product": "Smart Watch",
+      "stock": 75,
+      "reserved": 12,
+      "region": "North America",
+      "reorder_level": 15,
+      "supplier": "SmartTech Ltd",
+      "unit_cost": 120.00,
+      "demand_trend": "medium"
+    },
+    {
+      "product": "Smart Watch",
+      "stock": 32,
+      "reserved": 5,
+      "region": "Europe",
+      "reorder_level": 10,
+      "supplier": "SmartTech Ltd",
+      "unit_cost": 125.00,
+      "demand_trend": "low"
+    },
+    {
+      "product": "Bluetooth Speaker",
+      "stock": 200,
+      "reserved": 35,
+      "region": "North America",
+      "reorder_level": 40,
+      "supplier": "AudioMax Inc",
+      "unit_cost": 28.00,
+      "demand_trend": "high"
+    },
+    {
+      "product": "Bluetooth Speaker",
+      "stock": 156,
+      "reserved": 20,
+      "region": "Europe",
+      "reorder_level": 35,
+      "supplier": "AudioMax Inc",
+      "unit_cost": 30.00,
+      "demand_trend": "medium"
+    },
+    {
+      "product": "Gaming Mouse",
+      "stock": 95,
+      "reserved": 18,
+      "region": "North America",
+      "reorder_level": 25,
+      "supplier": "GameGear Co",
+      "unit_cost": 35.00,
+      "demand_trend": "high"
+    }
+  ],
+  "warehouse_locations": [
+    {
+      "region": "North America",
+      "address": "Chicago, IL",
+      "capacity": 10000,
+      "current_utilization": 0.75
+    },
+    {
+      "region": "Europe",
+      "address": "Amsterdam, Netherlands",
+      "capacity": 8000,
+      "current_utilization": 0.68
+    },
+    {
+      "region": "Asia Pacific",
+      "address": "Singapore",
+      "capacity": 6000,
+      "current_utilization": 0.82
+    }
+  ],
+  "restock_schedule": {
+    "next_delivery": "2025-11-05",
+    "supplier_lead_times": {
+      "TechSupply Co": 14,
+      "SmartTech Ltd": 21,
+      "AudioMax Inc": 10,
+      "GameGear Co": 7
+    }
+  }
+}
