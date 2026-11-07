@@ -1,4 +1,4 @@
-
+![CI](https://github.com/Shravann-2011/MarketBridge/actions/workflows/ci.yml/badge.svg)
 # MarketBridge – AI-Driven Marketing Campaign Planner
 
 **MarketBridge** is an intelligent multi-agent platform that automates marketing campaign planning by connecting marketing, finance, and inventory teams through autonomous AI agents.
