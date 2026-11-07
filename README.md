@@ -1,4 +1,4 @@
-cat > README.md << 'EOF'
+
 ![CI](https://github.com/Shravann-2011/MarketBridge/actions/workflows/ci.yml/badge.svg)
 
 # MarketBridge – Multi-Agent GenAI Campaign Planner
