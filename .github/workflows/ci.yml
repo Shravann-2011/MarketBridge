@@ -1,0 +1,12 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install fastapi==0.104.1 httpx==0.27.2 pytest pytest-cov python-dotenv numpy uvicorn
+      - run: pytest --cov=main --cov=websocket_manager --cov=scenario_generator
