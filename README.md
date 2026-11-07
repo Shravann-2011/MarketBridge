@@ -75,4 +75,3 @@ Runs at http://localhost:5173.
     │   └── main.py        # FastAPI entry point
     ├── tests/             # pytest suite
     └── .github/workflows/ # CI
-EOF
