@@ -1,4 +1,4 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from agent_manager import run_agents
@@ -6,6 +6,8 @@ from scenario_generator import generate_scenarios
 from sentiment_trend_analyzer import SentimentTrendAnalyzer  # NEW IMPORT
 import uvicorn
 import asyncio
+import logging
+import time
 
 # Import WebSocket manager
 from websocket_manager import ws_manager
@@ -20,6 +22,35 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Logging and request metrics ---
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+logger = logging.getLogger("marketbridge")
+
+metrics = {"total_requests": 0, "errors": 0, "by_path": {}}
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start = time.perf_counter()
+    status = 500
+    try:
+        response = await call_next(request)
+        status = response.status_code
+        duration_ms = (time.perf_counter() - start) * 1000
+        response.headers["X-Process-Time-ms"] = f"{duration_ms:.1f}"
+        return response
+    finally:
+        duration_ms = (time.perf_counter() - start) * 1000
+        logger.info("%s %s -> %s in %.1f ms", request.method, request.url.path, status, duration_ms)
+        if request.url.path != "/metrics":
+            metrics["total_requests"] += 1
+            if status >= 400:
+                metrics["errors"] += 1
+            entry = metrics["by_path"].setdefault(request.url.path, {"count": 0, "total_ms": 0.0})
+            entry["count"] += 1
+            entry["total_ms"] += duration_ms
+
 
 # Initialize sentiment trend analyzer
 sentiment_analyzer = SentimentTrendAnalyzer()  # NEW
@@ -184,6 +215,19 @@ async def analyze_sentiment_trends(request: SentimentAnalysisRequest):
                 ]
             }
         }
+
+
+@app.get("/metrics")
+async def get_metrics():
+    by_path = {
+        path: {"count": v["count"], "avg_ms": round(v["total_ms"] / v["count"], 1)}
+        for path, v in metrics["by_path"].items()
+    }
+    return {
+        "total_requests": metrics["total_requests"],
+        "errors": metrics["errors"],
+        "by_path": by_path,
+    }
 
 
 @app.get("/health")

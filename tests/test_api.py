@@ -131,3 +131,20 @@ def test_sentiment_missing_field_rejected(client):
 def test_websocket_accepts_connection_and_message(client):
     with client.websocket_connect("/ws/test-client") as ws:
         ws.send_text("hello")
+
+# ---------- Logging and metrics ----------
+def test_process_time_header_present(client):
+    r = client.get("/health")
+    assert "x-process-time-ms" in r.headers
+
+
+def test_metrics_counts_requests(client):
+    client.get("/health")
+    body = client.get("/metrics").json()
+    assert body["total_requests"] >= 1
+    assert body["by_path"]["/health"]["avg_ms"] >= 0
+
+
+def test_metrics_counts_errors(client):
+    client.get("/does-not-exist")
+    assert client.get("/metrics").json()["errors"] >= 1
